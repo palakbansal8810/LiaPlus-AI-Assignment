@@ -1,8 +1,3 @@
-"""
-Sentiment Analysis Chatbot
-A conversational chatbot with real-time sentiment analysis using Groq and LangChain
-"""
-
 import os
 from typing import List, Dict, Tuple
 from datetime import datetime
@@ -60,16 +55,7 @@ def init_sentiment_llm(api_key: str = None) -> ChatGroq:
 
 
 def analyze_sentiment(message: str, sentiment_llm: ChatGroq) -> SentimentAnalysis:
-    """
-    Tier 2: Analyze sentiment of a single user message
-    
-    Args:
-        message: User's message text
-        sentiment_llm: LLM configured for sentiment analysis
-        
-    Returns:
-        SentimentAnalysis object with sentiment details
-    """
+
     prompt = f"""Analyze the sentiment of the following message. Consider:
 - Overall emotional tone (positive, negative, neutral)
 - Intensity of emotion
@@ -133,17 +119,7 @@ def generate_chatbot_response(
     conversation_history: List[Dict],
     llm: ChatGroq
 ) -> str:
-    """
-    Generate chatbot response based on conversation history
     
-    Args:
-        user_message: Current user message
-        conversation_history: List of previous messages
-        llm: Language model for response generation
-        
-    Returns:
-        Chatbot's response text
-    """
     # Build context from conversation history
     context = []
     for msg in conversation_history[-5:]:  # Last 5 exchanges for context
@@ -485,4 +461,5 @@ def run_chatbot():
 
 
 if __name__ == "__main__":
+
     run_chatbot()
